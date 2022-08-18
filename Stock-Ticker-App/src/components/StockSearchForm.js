@@ -16,24 +16,22 @@ const StockSearchForm = (props) => {
         return stock.getStockFiveDayHistory()
       }).then((priceAndHistoryData) => {
         setStockData(priceAndHistoryData);
-        //props.setStockData(priceAndHistoryData)
       })
   }
 
 
-  return <div class="col">
-    <h1>Stock Search</h1>
-    <form
-      class="frm symbol"
-      onSubmit={handleStockForm}>
-      <div class="md-form">
-        <MDBInput label="Ticker Symbol"
-          value={stockSymbol}
-          onChange={(event)=> setStockSymbol(event.target.value)}/>
-      </div>
-      <button type="submit" class="btn btn-success">View</button>
-    </form>
-  </div>
+  return (<div className="col">
+            <form
+              className="frm symbol"
+              onSubmit={handleStockForm}>
+              <div className="md-form">
+                <MDBInput label="Ticker Symbol"
+                  value={stockSymbol}
+                  onChange={(event)=> setStockSymbol(event.target.value)}/>
+              </div>
+              <button type="submit" className="btn btn-success">View</button>
+            </form>
+          </div>);
 }
 
 export default StockSearchForm;

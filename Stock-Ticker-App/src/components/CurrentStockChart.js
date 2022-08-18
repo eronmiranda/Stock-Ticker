@@ -2,11 +2,12 @@ import React, {useState, useContext, useEffect} from 'react'
 import { Bar } from "react-chartjs-2";
 import {StockAppContext} from '../store/StockAppStore.js';
 
-const CurrentStockChart = (props) => {
+const CurrentStockChart = () => {
   const [myChartData, setMyChartData] = useState({});
   const store = useContext(StockAppContext);
   const [stockData, setStockData] = store.currentStock;
   const [showHistory, setShowHistory] = store.showHistory;
+  
   useEffect(()=> {
     if (!showHistory) {
       return
@@ -47,18 +48,19 @@ const CurrentStockChart = (props) => {
         },
       },
     })
+    return false;
   }, [stockData, showHistory])
   // destroy the chart so underlying data isn't shown.
 
 
-  return <React.Fragment>
-    {showHistory &&
-      <div class="col">
-        <h1>Current Stock Price</h1>
-        <Bar data={myChartData.data} options={{ responsive: true }} />
-      </div>
-    }
-  </React.Fragment>
+  return (<React.Fragment>
+            {showHistory &&
+              <div className="col">
+                <h1>Current Stock Price</h1>
+                <Bar data={myChartData.data} options={{ responsive: true }} />
+              </div>
+            }
+          </React.Fragment>);
 }
 
 export default CurrentStockChart;

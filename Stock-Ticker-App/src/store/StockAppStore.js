@@ -13,10 +13,10 @@ const StockAppStore = (props) => {
     "showHistory": [showHistory,setShowHistory],
     "myStocks": [myStocks, setMyStocks],
   }
-  return <StockAppContext.Provider value={store}>
-    {props.children}
-  </StockAppContext.Provider>
-}
+  return (<StockAppContext.Provider value={store}>
+            {props.children}
+          </StockAppContext.Provider>);
+};
 
 export default StockAppStore;
 export {StockAppContext}
